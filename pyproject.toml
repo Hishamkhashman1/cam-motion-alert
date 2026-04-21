@@ -1,0 +1,31 @@
+  [build-system]
+  requires = ["setuptools>=69", "wheel"]
+  build-backend = "setuptools.build_meta"
+
+  [project]
+  name = "cam-motion-alert"
+  version = "0.1.0"
+  description = "RTSP motion detection with WhatsApp alerts"
+  requires-python = ">=3.10"
+  dependencies = [
+    "opencv-python",
+    "python-dotenv",
+    "twilio",
+  ]
+
+  [project.optional-dependencies]
+  dev = [
+    "pytest",
+    "ruff",
+  ]
+
+  [tool.setuptools]
+  py-modules = [
+    "main",
+    "config",
+    "detector",
+    "notifier",
+    "snapshots",
+    "preprocessing",
+  ]
+
