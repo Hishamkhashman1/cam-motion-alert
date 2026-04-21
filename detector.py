@@ -33,7 +33,7 @@ def run_motion_detector() -> None:
         raise RuntimeError("Could not read initial frames from stream")
 
     prev_frame, prev_gray = preprocess_frame(frame1)
-    _, curr_gray = preprocess_frame(frame2)
+    curr_frame, curr_gray = preprocess_frame(frame2)
 
     last_alert_time = 0.0
 
@@ -76,12 +76,13 @@ def run_motion_detector() -> None:
                 last_alert_time = now
 
             cv2.imshow("Motion Detector", display_frame)
+            prev_frame, prev_gray = curr_frame, curr_gray
 
             ret, next_frame = cap.read()
             if not ret:
                 break
 
-            prev_frame, prev_gray = preprocess_frame(next_frame)
+            curr_frame, curr_gray = preprocess_frame(next_frame)
 
             if cv2.waitKey(1) == 27:
                 break
