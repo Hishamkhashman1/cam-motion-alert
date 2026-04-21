@@ -67,7 +67,7 @@ def run_motion_detector() -> None:
             now = time.time()
 
             if motion_detected and (now - last_alert_time >= ALERT_COOLDOWN_SECONDS):
-                snapshot_path = save_snapshot(display_frame)
+                snapshot_path = save_snapshots(display_frame)
                 public_url = build_public_snapshot_url(snapshot_path)
 
                 alert_text = f"Motion detected at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
