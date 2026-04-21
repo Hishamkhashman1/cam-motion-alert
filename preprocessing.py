@@ -1,3 +1,7 @@
+import cv2
+
+from config import FRAME_WIDTH
+
 """TODO: Resize and normalize frames before motion comparison."""
 
 # TODO: Resize frames to the configured width while preserving aspect ratio.

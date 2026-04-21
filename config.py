@@ -1,3 +1,8 @@
+import os
+from pathlib import Path
+
+from dotenv import load_dotenv
+
 """TODO: Load `.env` values and define all shared configuration constants for the motion alert app."""
 
 # TODO: Read RTSP_URL and Twilio credentials from the environment.
