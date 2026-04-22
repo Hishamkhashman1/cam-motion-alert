@@ -1,0 +1,13 @@
+README.md
+config.py
+detector.py
+main.py
+notifier.py
+preprocessing.py
+pyproject.toml
+snapshots.py
+cam_motion_alert.egg-info/PKG-INFO
+cam_motion_alert.egg-info/SOURCES.txt
+cam_motion_alert.egg-info/dependency_links.txt
+cam_motion_alert.egg-info/requires.txt
+cam_motion_alert.egg-info/top_level.txt

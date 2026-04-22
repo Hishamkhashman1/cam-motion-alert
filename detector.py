@@ -5,20 +5,12 @@ from datetime import datetime
 from config import ALERT_COOLDOWN_SECONDS
 from config import MIN_CONTOUR_AREA
 from config import RTSP_URL
-from notifier import send_whatsapp_alert
+from notifier import send_motion_alert
 from preprocessing import preprocess_frame
 from snapshots import build_public_snapshot_url
 from snapshots import save_snapshots
 
 
-
-"""TODO: Implement the motion detection loop that reads frames, detects motion, saves snapshots, and sends alerts."""
-
-# TODO: Open the RTSP stream and read successive frames.
-# TODO: Preprocess frames, compare them, and detect contours above the configured motion threshold.
-# TODO: Throttle alerts using the cooldown setting.
-# TODO: Save snapshots and send WhatsApp notifications when motion is detected.
-# TODO: Release the camera and close OpenCV windows on exit.
 
 def run_motion_detector() -> None:
     cap = cv2.VideoCapture(RTSP_URL)
@@ -72,7 +64,7 @@ def run_motion_detector() -> None:
 
                 alert_text = f"Motion detected at {datetime.now().strftime('%Y-%m-%d %H:%M:%S')}"
 
-                send_whatsapp_alert(alert_text, public_url)
+                send_motion_alert(alert_text, snapshot_path, public_url)
                 last_alert_time = now
 
             cv2.imshow("Motion Detector", display_frame)
@@ -89,4 +81,3 @@ def run_motion_detector() -> None:
     finally:
         cap.release()
         cv2.destroyAllWindows()
-
